@@ -8,6 +8,7 @@ namespace CityInfo.API.Services
 {
     public interface ICityInfoRepository
     {
+        bool CityExists(int cityId);
         // IQueryable vs IEnumerable
         // IQueryable > consumer of repo can keep building on an Iqueryable (add i clause, where clause etc). 
         // but will be leaking persistance related logic out of repo which seems to violate the purpose of the repo pattern

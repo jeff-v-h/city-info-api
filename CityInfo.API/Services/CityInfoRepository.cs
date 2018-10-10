@@ -15,6 +15,11 @@ namespace CityInfo.API.Services
             _context = context;
         }
 
+        public bool CityExists(int cityId)
+        {
+            return _context.Cities.Any(c => c.Id == cityId);
+        }
+
         public IEnumerable<City> GetCities()
         {
             // ToList helps to ensure query is executed at this specific time.
