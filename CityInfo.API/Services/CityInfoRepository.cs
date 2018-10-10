@@ -56,6 +56,11 @@ namespace CityInfo.API.Services
                            .Where(p => p.CityId == cityId).ToList();
         }
 
+        public void DeletePointOfInterest(PointOfInterest pointOfInterest)
+        {
+            _context.PointsOfInterest.Remove(pointOfInterest);
+        }
+
         // return true when 0 or more entities have been saved
         public bool Save()
         {
