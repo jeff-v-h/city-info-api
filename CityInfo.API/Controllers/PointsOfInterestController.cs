@@ -92,28 +92,22 @@ namespace CityInfo.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
+            var finalPointOfInterest = Mapper.Map<Entities.PointOfInterest>(pointOfInterest);
 
-            if (city == null)
+            _cityInfoRepository.AddPointOfInterestForCity(cityId, finalPointOfInterest);
+
+            // If it didnt save properly, there was a server side error since we already checked validation rules and possible client mistakes above
+            if (!_cityInfoRepository.Save())
             {
-                return NotFound();
+                return StatusCode(500, "A problem happened while handling your request.");
             }
 
-            // demo purposes - to be improved
-            var maxPointOfInterestId = CitiesDataStore.Current.Cities.SelectMany(
-                             c => c.PointsOfInterest).Max(p => p.Id);
-
-            var finalPointOfInterest = new PointOfInterestDto()
-            {
-                Id = ++maxPointOfInterestId,
-                Name = pointOfInterest.Name,
-                Description = pointOfInterest.Description
-            };
-
-            city.PointsOfInterest.Add(finalPointOfInterest);
+            // Save has been called at this point so the PointOfInterest has been created.
+            // Map that entity back to the dto and return it.
+            var createdPointOfInterestToReturn = Mapper.Map<Models.PointOfInterestDto>(finalPointOfInterest);
 
             return CreatedAtRoute("GetPointOfInterest", new
-            { cityId = cityId, id = finalPointOfInterest.Id }, finalPointOfInterest);
+            { cityId = cityId, id = createdPointOfInterestToReturn.Id }, createdPointOfInterestToReturn);
         }
 
         [HttpPut("{cityId}/pointsofinterest/{id}")]

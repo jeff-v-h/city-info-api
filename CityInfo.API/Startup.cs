@@ -85,13 +85,16 @@ namespace CityInfo.API
             // Use Automapper package to create a map from endpoint of entities to the dtos we are returning from API actions
             AutoMapper.Mapper.Initialize(cfg =>
             {
+                // mapping for GET requests
                 cfg.CreateMap<Entities.City, Models.CityWithoutPointsOfInterestDto>();
                 cfg.CreateMap<Entities.City, Models.CityDto>();
                 // CityDto includes a list of interests, so it should also map from POI to it's Dto for City>CityDto to work
                 cfg.CreateMap<Entities.PointOfInterest, Models.PointOfInterestDto>();
-                cfg.CreateMap<Entities.PointOfInterest, Models.PointOfInterestForUpdateDto>();
+
+                // mapping for creating objects
                 cfg.CreateMap<Models.PointOfInterestForCreationDto, Entities.PointOfInterest>();
                 cfg.CreateMap<Models.PointOfInterestForUpdateDto, Entities.PointOfInterest>();
+                cfg.CreateMap<Entities.PointOfInterest, Models.PointOfInterestForUpdateDto>();
             });
 
             app.UseMvc();
