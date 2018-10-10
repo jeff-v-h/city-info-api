@@ -53,6 +53,8 @@ namespace CityInfo.API
             // in local windows machine > edit system environment variables > add variable
             // Variable name: connectionStrings:cityInfoDBConnectionString
             // Variable value: Server=myproductionserver;Database=CityInfoDB;UserId=CertainlyNotSA;Password=CertainlyNotSA;
+
+            services.AddScoped<ICityInfoRepository, CityInfoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
