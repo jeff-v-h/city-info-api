@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CityInfo.API.Services
 {
-    interface ICityInfoRepository
+    public interface ICityInfoRepository
     {
         // IQueryable vs IEnumerable
         // IQueryable > consumer of repo can keep building on an Iqueryable (add i clause, where clause etc). 
