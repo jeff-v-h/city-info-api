@@ -7,13 +7,13 @@ It is intended to be used as a source of reference for future projects.
 
 ## Requirements
 ### Base Requirements
-.NET Core 2.1
-Visual Studio 2017
+- .NET Core 2.1
+- Visual Studio 2017
 
 ### Additional NuGet Packages
-Automapper 7.0.1
-Microsoft.EntityFrameworkCore.SqlServer 2.1.4
-NLog.Web.AspNetCore 4.7.0
+- Automapper 7.0.1
+- Microsoft.EntityFrameworkCore.SqlServer 2.1.4
+- NLog.Web.AspNetCore 4.7.0
 
 ### Helper Software
 Postman - to test API HTTP requests
