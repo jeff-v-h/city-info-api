@@ -91,11 +91,13 @@ namespace CityInfo.API
                 // CityDto includes a list of interests, so it should also map from POI to it's Dto for City>CityDto to work
                 cfg.CreateMap<Entities.PointOfInterest, Models.PointOfInterestDto>();
 
-                // mapping for creating objects
+                // mapping for creating objects (POST)
                 cfg.CreateMap<Models.PointOfInterestForCreationDto, Entities.PointOfInterest>();
 
-                //mapping for updating a resource
+                //mapping for updating a resource (PUT)
                 cfg.CreateMap<Models.PointOfInterestForUpdateDto, Entities.PointOfInterest>();
+
+                // mapping for partial updating (PATCH)
                 cfg.CreateMap<Entities.PointOfInterest, Models.PointOfInterestForUpdateDto>();
             });
 
