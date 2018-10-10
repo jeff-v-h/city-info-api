@@ -93,6 +93,8 @@ namespace CityInfo.API
 
                 // mapping for creating objects
                 cfg.CreateMap<Models.PointOfInterestForCreationDto, Entities.PointOfInterest>();
+
+                //mapping for updating a resource
                 cfg.CreateMap<Models.PointOfInterestForUpdateDto, Entities.PointOfInterest>();
                 cfg.CreateMap<Entities.PointOfInterest, Models.PointOfInterestForUpdateDto>();
             });
