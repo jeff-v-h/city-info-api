@@ -30,6 +30,8 @@ namespace CityInfo.API
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            // This allows us to configure how ASP.NET Core serialises and de-seralises data
+            // by default, ASP.NET Core uses JSON.
             services.AddMvc()
                 .AddMvcOptions(o => o.OutputFormatters.Add(
                     new XmlDataContractSerializerOutputFormatter()));
