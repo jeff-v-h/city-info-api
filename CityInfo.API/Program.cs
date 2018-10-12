@@ -4,15 +4,22 @@ using Microsoft.AspNetCore.Hosting;
 namespace CityInfo.API
 {
     public class Program
-    {             
+    {        
+        // Main entry point for the application
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            // create the web host builder
+            CreateWebHostBuilder(args)
+                // build the web host
+                .Build()
+                // and run the web host, i.e. your web application
+                .Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            // create a default web host builder, with the default settings and configuration
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
+                // configure it to use your 'Startup' class
+                .UseStartup<Startup>();
     }
 }
