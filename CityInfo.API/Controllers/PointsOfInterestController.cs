@@ -47,7 +47,9 @@ namespace CityInfo.API.Controllers
             }
             catch (Exception ex)
             {
+                // This is seen by the dev in the Output window
                 _logger.LogCritical($"Exception while getting points of interest for city with id {cityId}.", ex);
+                // While this is seen by the user
                 return StatusCode(500, "A problem happened while handling your request.");
             }
         }
