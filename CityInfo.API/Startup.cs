@@ -75,11 +75,13 @@ namespace CityInfo.API
             }
             else
             {
+                // adds an exception handler page when not in dev environment
                 app.UseExceptionHandler();
             }
 
             cityInfoContext.EnsureSeedDataForContext();
 
+            // Status Code Pages middleware
             app.UseStatusCodePages();
 
             // Use Automapper package to create a map from endpoint of entities to the dtos we are returning from API actions
@@ -103,6 +105,7 @@ namespace CityInfo.API
 
             app.UseMvc();
 
+            // Uncomment below block to see the exception handler page
             //app.Run((context) =>
             //{
             //    throw new Exception("Example exception");

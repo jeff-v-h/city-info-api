@@ -106,6 +106,8 @@ namespace CityInfo.API.Controllers
             // Map that entity back to the dto and return it.
             var createdPointOfInterestToReturn = Mapper.Map<Models.PointOfInterestDto>(finalPointOfInterest);
 
+            // return a URI to the newly created resource after invoking a POST method to store the new object.
+            // The cityId and id correspond to the {cityId} and {id} in the GET URI
             return CreatedAtRoute("GetPointOfInterest", new
             { cityId = cityId, id = createdPointOfInterestToReturn.Id }, createdPointOfInterestToReturn);
         }
